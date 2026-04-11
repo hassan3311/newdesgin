@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IBB Petroleum</title>
+
+<style>
+:root {
+  --primary: #0d3b66;
+  --secondary: #1c6ed5;
+  --light: #f8fafc;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+   font-family: 'Inter', sans-serif;
+}
+.logo img {
+  height: 50px;   /* control height */
+  width: auto;    /* maintain ratio */
+  object-fit: contain;
+}
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  align-items: center;
+  background: white;
+}
+
+.navbar nav a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar nav a:hover {
+  color: var(--secondary);
+}
+
+.btn {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* SLIDER */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide video,
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(13,59,102,0.95), rgba(28,110,213,0.85));
+  clip-path: polygon(0 0, 85% 0, 65% 100%, 0% 100%);
+  z-index: 2;
+}
+
+/* CONTENT */
+.content {
+  position: absolute;
+  top: 40%;
+  left: 80px;
+  color: white;
+  z-index: 3;
+  max-width: 520px;
+}
+
+.content h1 {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.content p {
+  margin-top: 15px;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* SERVICE BOX */
+.service-box {
+  position: absolute;
+  right: 80px;
+  top: 40%;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 12px;
+  color: white;
+  width: 260px;
+  z-index: 3;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.service-box button {
+  margin-top: 12px;
+  padding: 10px;
+  border: none;
+  background: white;
+  color: var(--primary);
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* CONTROLS */
+.controls span {
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* SERVICES OVERLAP */
+.services {
+  position: relative;
+  margin-top: -120px;
+  z-index: 5;
+  padding: 0 40px;
+}
+
+.services-box {
+  background: white;
+  border-radius: 14px;
+  padding: 40px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* TOP BLUE LINE */
+.services-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  border-radius: 14px 14px 0 0;
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 12px;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.card h3 {
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.card p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.card button {
+  background: var(--primary);
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  background: var(--secondary);
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+
+  .overlay {
+    width: 100%;
+    clip-path: none;
+  }
+
+  .content {
+    position: relative;
+    left: 0;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .content h1 {
+    font-size: 34px;
+  }
+
+  .service-box {
+    position: relative;
+    margin: 20px auto;
+    right: 0;
+    width: 90%;
+  }
+
+  .services {
+    margin-top: -70px;
+    padding: 0 15px;
+  }
+
+  .services-box {
+    flex-direction: column;
+  }
+}
+
+
+/* SECTION */
+.feature-section {
+  padding: 100px 20px;
+  background: #f8fafc;
+}
+
+.feature-container {
+  max-width: 950px;   /* 👈 MAIN FIX */
+  margin: 0 auto;      /* center */
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+/* TEXT */
+.feature-text {
+  flex: 1;
+}
+
+.feature-text h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.feature-text p {
+  margin-top: 15px;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* BUTTON */
+.primary-btn {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #0d3b66, #1c6ed5);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* IMAGE */
+.feature-image {
+  flex: 1;
+}
+
+.feature-image img {
+  width: 100%;
+  border-radius: 10px;
+  border: 3px solid #1c6ed5;
+  transition: 0.4s;
+}
+
+/* HOVER EFFECT */
+.feature-image:hover img {
+  transform: scale(1.03);
+}
+
+/* ANIMATIONS */
+.animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-left {
+  transform: translateX(-60px);
+}
+
+.animate-right {
+  transform: translateX(60px);
+}
+
+.animate.show.animate-left,
+.animate.show.animate-right {
+  transform: translateX(0);
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+
+  .feature-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .feature-text h2 {
+    font-size: 28px;
+  }
+
+}
+
+/* SECTION */
+.budget-section {
+  padding: 100px 20px;
+  background: #f8fafc;
+}
+
+/* CONTAINER */
+.budget-container {
+  max-width: 950px;   /* 👈 YOUR REQUIREMENT */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* IMAGE */
+.budget-image {
+  flex: 1;
+}
+
+.budget-image img {
+  width: 100%;
+  border-radius: 10px;
+  border: 3px solid #1c6ed5;
+  transition: 0.3s;
+}
+
+.budget-image:hover img {
+  transform: scale(1.03);
+}
+
+/* TEXT */
+.budget-text {
+  flex: 1;
+}
+
+.budget-text h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.budget-text p {
+  margin-top: 15px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* BUTTON (reuse same) */
+.primary-btn {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #0d3b66, #1c6ed5);
+  color: white;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+
+  .budget-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .budget-text h2 {
+    font-size: 26px;
+  }
+
+}
+
+
+
+
+/* ================= FOOTER WRAPPER ================= */
+.footer-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+/* CTA */
+.cta-section {
+  position: relative;
+  height: 400px;
+  background: url('./images/cta-bg.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-section::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+    background: linear-gradient(
+    rgba(10,44,74,0.9),
+    rgba(10,44,74,0.7)
+  );
+}
+
+.cta-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  max-width: 700px;
+}
+
+.cta-btn {
+  margin-top: 20px;
+  background: #ff7a00;
+  padding: 12px 25px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* FOOTER */
+.footer-bar {
+  position: relative;
+  background: url('./images/pexels-jakub-pabis-147246622-15978384.jpg') center/cover no-repeat;
+  padding: 40px;
+  color: white;
+}
+
+/* overlay for readability */
+.footer-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+}
+
+.footer-container {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+/* ================= VAN ANIMATION ================= */
+.footer-van {
+  align-items: center;
+}
+
+.footer-van img {
+  width: 140px;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+}
+
+.footer-van p {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+/* ACTIVE STATE */
+.footer-van.show {
+  transform: translateX(0); /* move forward */
+  opacity: 1;
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo"><img src="./images/logo.png.png" alt=""></div>
+  <nav>
+    <a href="#">Fueling</a>
+    <a href="#">Construction</a>
+    <a href="#">Compliance</a>
+    <a href="#">Products</a>
+  </nav>
+  <button class="btn">Service Request</button>
+</header>
+
+<section class="hero">
+
+  <div class="slides">
+
+    <!-- VIDEO -->
+    <div class="slide active">
+      <video muted loop playsinline>
+        <source src="./videos/video2.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="slide">
+      <img src="./images/before.png" alt="">
+    </div>
+
+    <!-- VIDEO -->
+    <div class="slide">
+      <video muted loop playsinline>
+        <source src="./videos/video3.mp4" type="video/mp4">
+      </video>
+    </div>
+
+ <!-- IMAGE -->
+    <div class="slide">
+      <img src="./images/after.png" alt="">
+    </div>
+  </div>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <h1>KEEP FUELING</h1>
+    <p>Modern petroleum solutions powered with automation & reliability.</p>
+  </div>
+
+  <div class="service-box">
+    <h3>24/7 Emergency Service</h3>
+    <p>Call: (123) 456-7890</p>
+    <button>REQUEST SERVICE</button>
+  </div>
+
+  <div class="controls">
+    <span onclick="prevSlide()">❮</span>
+    <span onclick="nextSlide()">❯</span>
+  </div>
+
+</section>
+
+ <!-- Services -->
+
+<section class="services">
+  <div class="services-box">
+
+    <div class="card">
+      <h3>RETAIL FUELING</h3>
+      <p>Servicing gas stations with dispensers, POS, and fueling systems.</p>
+      <button>RETAIL FUELING</button>
+    </div>
+
+    <div class="card">
+      <h3>COMMERCIAL FUELING</h3>
+      <p>Fleet systems, pumps, wireless connections, and more.</p>
+      <button>COMMERCIAL FUELING</button>
+    </div>
+
+    <div class="card">
+      <h3>EV CHARGING</h3>
+      <p>Setup EV charging stations for homes, businesses & complexes.</p>
+      <button>EV CHARGING</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="feature-section">
+
+  <div class="feature-container">
+
+    <!-- TEXT -->
+    <div class="feature-text animate-left animate">
+      <h2>The best service for latest technology in the industry.</h2>
+      <p>
+        Featuring the brand new Wayne Anthem and Ovation 2.
+        Our highly trained and experienced technicians are
+        the best at keeping your dispensers working great.
+      </p>
+
+      <button class="primary-btn">EXPLORE DISPENSERS</button>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="feature-image animate-right animate">
+      <img src="./images/expert.jpg" alt="">
+    </div>
+
+  </div>
+
+</section>
+
+<section class="budget-section">
+
+  <div class="budget-container">
+
+    <!-- IMAGE -->
+    <div class="budget-image animate animate-left">
+      <img src="./images/1481.jpg" alt="">
+    </div>
+
+    <!-- TEXT -->
+    <div class="budget-text animate animate-right">
+      <h2>We Work With Your Budget</h2>
+      <p>
+        Our sales team works with you to match your needs to the best available solution.
+        Every Retail and Commercial fueling location is unique, and solutions are tailored to your situation.
+      </p>
+
+      <button class="primary-btn">CONTACT SALES</button>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= CTA + FOOTER ================= -->
+
+<section class="footer-wrapper">
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-content">
+      <h2>LET'S GET STARTED</h2>
+      <p>
+        With industry leading products, over 55 years of experience,
+        and a team of experts — connect with the best today.
+      </p>
+      <button class="cta-btn">CONTACT US</button>
+    </div>
+  </div>
+
+  <!-- FOOTER BAR -->
+  <div class="footer-bar">
+
+    <div class="footer-container">
+
+      <!-- MOVING VAN -->
+      <div class="footer-van animate-van">
+        <img src="./images/9ed16884-606f-4063-9c05-4707ca51df8a_removalai_preview.png" alt="">
+        <p>IBB Petroleum</p>
+      </div>
+
+      <!-- OFFICE -->
+      <div>
+        <h4>Office</h4>
+        <p>2939 175th St.<br>Lansing, IL 60438</p>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <h4>Email & Phone</h4>
+        <p>info@ibbpetroleum.com<br>(123) 456-7890</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  let slides = document.querySelectorAll(".slide");
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((s) => {
+      s.classList.remove("active");
+
+      let vid = s.querySelector("video");
+      if (vid) {
+        vid.pause();
+        vid.currentTime = 0;
+      }
+    });
+
+    slides[index].classList.add("active");
+
+    let activeVideo = slides[index].querySelector("video");
+    if (activeVideo) {
+      activeVideo.play().catch(() => {});
+    }
+  }
+
+  window.nextSlide = function () {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  };
+
+  window.prevSlide = function () {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  };
+
+  // Auto slider
+  setInterval(window.nextSlide, 6000);
+
+  // Scroll effect
+  window.addEventListener("scroll", () => {
+    let hero = document.querySelector(".hero");
+    if (window.scrollY > 50) {
+      hero.classList.add("scrolled");
+    } else {
+      hero.classList.remove("scrolled");
+    }
+  });
+
+  // Play first video
+  showSlide(0);
+
+});
+
+
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".animate").forEach(el => {
+  observer.observe(el);
+});
+
+
+/* ================= VAN SCROLL ANIMATION ================= */
+
+const vanObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.4 });
+
+document.querySelectorAll(".animate-van").forEach(el => {
+  vanObserver.observe(el);
+});
+</script>
+
+</body>
+</html>
