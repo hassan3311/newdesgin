@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>IBB Petroleum | About Us — Fueling Excellence Since 2006</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fefefe;
+      color: #0a2540;
+      overflow-x: hidden;
+    }
+
+    /* ========== IBB BRAND COLORS (ORIGINAL THEME) ========== */
+    :root {
+      --primary: #0d3b66;
+      --secondary: #1c6ed5;
+      --primary-dark: #072b48;
+      --accent-grad: linear-gradient(135deg, #0d3b66, #1c6ed5);
+      --gold-accent: #f5a623;
+      --light-mist: #f8fafc;
+      --shadow-xl: 0 25px 45px -12px rgba(0, 0, 0, 0.12);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ========== NAVBAR (IDENTICAL TO ORIGINAL) ========== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: white;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.02);
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 100;
+    }
+
+    .logo img {
+      height: 54px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .navbar nav {
+      display: flex;
+      gap: 36px;
+    }
+
+    .navbar nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e2f41;
+      transition: 0.2s;
+      font-size: 0.98rem;
+    }
+
+    .navbar nav a:hover,
+    .navbar nav a.active {
+      color: var(--secondary);
+    }
+
+    .request-btn {
+      background: var(--accent-grad);
+      color: white;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 4px 8px rgba(13,59,102,0.15);
+    }
+
+    .request-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(28,110,213,0.25);
+    }
+
+    /* ========== ABOUT HERO ========== */
+    .about-hero {
+      background: linear-gradient(125deg, #0a2d4e 0%, #0d3b66 100%);
+      padding: 85px 0 95px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero::before {
+      content: "⛽";
+      font-size: 280px;
+      opacity: 0.045;
+      position: absolute;
+      bottom: -70px;
+      right: -20px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      text-align: center;
+      color: white;
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-inner h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #fff, #cbe4fe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-inner p {
+      font-size: 1.2rem;
+      max-width: 680px;
+      margin: 20px auto 0;
+      opacity: 0.92;
+      line-height: 1.5;
+    }
+
+    /* ========== MISSION & VISION SECTION ========== */
+    .mission-vision {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .mv-card {
+      background: var(--light-mist);
+      padding: 42px 38px;
+      border-radius: 32px;
+      transition: 0.3s;
+      border: 1px solid rgba(28, 110, 213, 0.1);
+      box-shadow: var(--shadow-md);
+    }
+
+    .mv-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(28, 110, 213, 0.2);
+    }
+
+    .mv-icon {
+      font-size: 48px;
+      color: var(--secondary);
+      margin-bottom: 24px;
+    }
+
+    .mv-card h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .mv-card p {
+      color: #4a5b79;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    /* ========== OUR STORY SECTION ========== */
+    .story-section {
+      padding: 80px 0;
+      background: #f8fafc;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .story-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .story-text h2:after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--accent-grad);
+      border-radius: 4px;
+    }
+
+    .story-text p {
+      color: #4a5b79;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .story-image img {
+      width: 100%;
+      border-radius: 28px;
+      box-shadow: var(--shadow-xl);
+      transition: 0.4s;
+    }
+
+    .story-image:hover img {
+      transform: scale(1.02);
+    }
+
+    /* ========== VALUES SECTION ========== */
+    .values-section {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 55px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+
+    .value-card {
+      text-align: center;
+      padding: 40px 28px;
+      background: var(--light-mist);
+      border-radius: 28px;
+      transition: 0.3s;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(28,110,213,0.15);
+    }
+
+    .value-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, rgba(13,59,102,0.08), rgba(28,110,213,0.08));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 36px;
+      color: var(--secondary);
+    }
+
+    .value-card h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    .value-card p {
+      color: #5a6e8a;
+      line-height: 1.5;
+    }
+
+    /* ========== LEADERSHIP TEAM ========== */
+    .leadership-section {
+      padding: 80px 0;
+      background: #f8fafc;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 45px;
+      margin-top: 20px;
+    }
+
+    .team-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .team-img {
+      height: 280px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #0d3b66, #1c6ed5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .team-img i {
+      font-size: 80px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .team-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-card h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 24px;
+    }
+
+    .team-title {
+      color: var(--secondary);
+      font-weight: 600;
+      margin: 8px 0 12px;
+    }
+
+    .team-desc {
+      padding: 0 20px 24px;
+      color: #5a6e8a;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* ========== STATS SECTION (EXACT NUMBERS FROM IBB SITE) ========== */
+    .stats-premium {
+      background: linear-gradient(105deg, #0d3b66, #0a2d4e);
+      padding: 85px 20px;
+    }
+
+    .stats-flex {
+      display: flex;
+      justify-content: center;
+      gap: 55px;
+      flex-wrap: wrap;
+    }
+
+    .stat-block {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+      padding: 32px 38px;
+      border-radius: 42px;
+      min-width: 180px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .stat-block h2 {
+      font-size: 48px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .stat-block h2::after {
+      content: "+";
+      color: #f5a623;
+      font-size: 34px;
+      margin-left: 5px;
+    }
+
+    .stat-block p {
+      color: #cddff5;
+      font-weight: 500;
+      margin-top: 12px;
+    }
+
+    /* ========== CTA + FOOTER (ORIGINAL SIGNATURE) ========== */
+    .footer-wrapper {
+      position: relative;
+    }
+
+    .cta-section {
+      position: relative;
+      height: 400px;
+      background: linear-gradient(115deg, rgba(10, 44, 74, 0.92), rgba(28, 110, 213, 0.85)), url('https://placehold.co/1920x600/1c6ed5/white?text=IBB+Fuels+Tomorrow');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-content {
+      text-align: center;
+      color: white;
+      max-width: 700px;
+      z-index: 2;
+    }
+
+    .cta-btn {
+      margin-top: 25px;
+      background: #ff7a00;
+      padding: 14px 36px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      background: #e56e00;
+    }
+
+    .footer-bar {
+      background: #072b48;
+      padding: 55px 40px;
+      color: white;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+      text-align: center;
+    }
+
+    .footer-van img {
+      width: 140px;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));
+    }
+
+    @media (max-width: 880px) {
+      .navbar { padding: 16px 24px; flex-direction: column; gap: 12px; }
+      .navbar nav { gap: 20px; flex-wrap: wrap; justify-content: center; }
+      .hero-inner h1 { font-size: 2.5rem; }
+      .mv-grid { grid-template-columns: 1fr; }
+      .story-grid { grid-template-columns: 1fr; text-align: center; }
+      .story-text h2:after { left: 50%; transform: translateX(-50%); }
+      .footer-container { grid-template-columns: 1fr; gap: 30px; }
+      .values-grid { gap: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<header class="navbar">
+  <div class="logo">
+    <img src="./images/logo.png.png" alt="IBB Petroleum" onerror="this.src='https://placehold.co/220x60/0d3b66/white?text=IBB+Petroleum'">
+  </div>
+  <nav>
+    <a href="#">Fueling</a>
+    <a href="#">Construction</a>
+    <a href="#">Compliance</a>
+    <a href="#">Products</a>
+    <a href="#" class="active">About Us</a>
+  </nav>
+  <button class="request-btn"><i class="fas fa-headset"></i> Service Request</button>
+</header>
+
+<!-- ========== ABOUT HERO ========== -->
+<section class="about-hero">
+  <div class="container hero-inner">
+    <h1>About IBB Petroleum</h1>
+    <p>Your Ideal Petroleum Partner: Distribution, Supply, and Maintenance of Industrial Commercial Fueling Equipment</p>
+  </div>
+</section>
+
+<!-- ========== MISSION & VISION ========== -->
+<section class="mission-vision">
+  <div class="container">
+    <div class="mv-grid">
+      <div class="mv-card">
+        <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+        <h3>Our Mission</h3>
+        <p>To provide comprehensive and specialized guidance through our company's experts, leading you step by step towards optimal fueling solutions and decisions. We specialize in gas station & convenience store infrastructure, delivering excellence in every project.</p>
+      </div>
+      <div class="mv-card">
+        <div class="mv-icon"><i class="fas fa-eye"></i></div>
+        <h3>Our Vision</h3>
+        <p>To remain the most trusted partner for industrial and commercial fueling equipment — combining technical expertise, integrity, and innovation to power businesses across North America.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== OUR STORY (UPDATED WITH ACCURATE INFO) ========== -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text">
+        <h2>Our Story</h2>
+        <p>IBB Petroleum Services Inc. has been a cornerstone in the petroleum equipment industry, dedicated to the distribution, supply, and maintenance of industrial commercial fueling systems. With over <strong>18 years of experience</strong>, we have grown into a full-service partner for gas stations, convenience stores, and commercial fleet operators.</p>
+        <p>We take pride in our track record: <strong>874+ happy clients</strong>, <strong>398 completed projects</strong>, and currently <strong>42 projects under execution</strong>. Every project reflects our commitment to safety, innovation, and operational excellence.</p>
+        <p>Our team of experts provides you with comprehensive and specialized guidance, leading you step by step towards optimal solutions and decisions. Whether it's a new build, retrofit, or emergency maintenance, IBB Petroleum is your ideal petroleum partner.</p>
+      </div>
+      <div class="story-image">
+        <img src="./images/1481.jpg" alt="IBB Petroleum team at work" onerror="this.src='https://placehold.co/600x500/0d3b66/white?text=IBB+History'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CORE VALUES ========== -->
+<section class="values-section">
+  <div class="container">
+    <h2 class="section-title">Why Choose IBB Petroleum</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon"><i class="fas fa-chalkboard-user"></i></div>
+        <h4>Expert Guidance</h4>
+        <p>Our specialists provide step-by-step consultation to ensure you make the right fueling decisions for your business.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><i class="fas fa-gas-pump"></i></div>
+        <h4>Gas Station & C-Store Specialists</h4>
+        <p>We focus exclusively on fueling infrastructure — from dispensers and tanks to POS and compliance systems.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><i class="fas fa-clock"></i></div>
+        <h4>18+ Years of Excellence</h4>
+        <p>Nearly two decades of proven performance, continuous improvement, and industry leadership.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+        <h4>Client Success First</h4>
+        <p>Your success is our success. We measure ourselves by the satisfaction and growth of our 874+ happy clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LEADERSHIP TEAM ========== -->
+<section class="leadership-section">
+  <div class="container">
+    <h2 class="section-title">Leadership & Expertise</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-img">
+          <i class="fas fa-user-tie"></i>
+        </div>
+        <h4>Michael Ibrahim</h4>
+        <div class="team-title">President & Founder</div>
+        <div class="team-desc">Over 20 years in petroleum distribution and construction. Leads strategic vision and major project development.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-img">
+          <i class="fas fa-hard-hat"></i>
+        </div>
+        <h4>James R. Carter</h4>
+        <div class="team-title">VP of Operations</div>
+        <div class="team-desc">Oversees field operations, safety compliance, and quality assurance for all 398+ completed projects.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-img">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h4>Dr. Emily Sanchez</h4>
+        <div class="team-title">Technical Director</div>
+        <div class="team-desc">PE certified, fueling system design, environmental compliance, and innovative solutions expert.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-img">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h4>David Kim</h4>
+        <div class="team-title">Client Relations Director</div>
+        <div class="team-desc">Dedicated to seamless communication, long-term partnerships, and client success stories.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATS SECTION (EXACT NUMBERS FROM IBBPETROLEUM.COM) ========== -->
+<section class="stats-premium">
+  <div class="stats-flex">
+    <div class="stat-block">
+      <h2 class="counter" data-target="874">0</h2>
+      <p>Happy Clients</p>
+    </div>
+    <div class="stat-block">
+      <h2 class="counter" data-target="398">0</h2>
+      <p>Projects Completed</p>
+    </div>
+    <div class="stat-block">
+      <h2 class="counter" data-target="42">0</h2>
+      <p>Projects Under Execution</p>
+    </div>
+    <div class="stat-block">
+      <h2 class="counter" data-target="18">0</h2>
+      <p>Years of Experience</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA + FOOTER ========== -->
+<div class="footer-wrapper">
+  <div class="cta-section">
+    <div class="cta-content">
+      <h2 style="font-size: 2.4rem;">Ready to Work with IBB?</h2>
+      <p>Join our family of 874+ happy clients. Let us guide you to the ideal fueling solution for your business.</p>
+      <button class="cta-btn" onclick="window.location.href='contact.html'"><i class="fas fa-comment-dots"></i> Request Consultation</button>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="footer-container">
+      <div class="footer-van">
+        <img src="./images/van.png" alt="Fuel Van" onerror="this.src='https://placehold.co/140x80/ff7a00/white?text=🚛'">
+        <p style="margin-top: 8px; font-size: 12px;">IBB Logistics Fleet</p>
+      </div>
+      <div>
+        <h4><i class="fas fa-building"></i> Office</h4>
+        <p>21350 Ryan Rd.<br>Warren, MI 48091</p>
+      </div>
+      <div>
+        <h4><i class="fas fa-envelope"></i> Contact</h4>
+        <p>info@ibbpetroleum.com<br>(248) 250-6110</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ========== COUNTER ANIMATION (USING REAL IBB NUMBERS) ==========
+  const counters = document.querySelectorAll('.counter');
+  let countedStats = false;
+
+  function startCounters() {
+    counters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      let current = 0;
+      const increment = Math.ceil(target / 70);
+      const update = () => {
+        current += increment;
+        if (current < target) {
+          counter.innerText = current;
+          requestAnimationFrame(update);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      update();
+    });
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !countedStats) {
+        countedStats = true;
+        startCounters();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  const statsSection = document.querySelector('.stats-premium');
+  if (statsSection) statsObserver.observe(statsSection);
+
+  // ========== VAN ANIMATION ==========
+  const van = document.querySelector('.footer-van');
+  if (van) {
+    const vanObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          van.style.transition = 'transform 1s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+          van.style.transform = 'translateX(0)';
+          van.style.opacity = '1';
+        }
+      });
+    }, { threshold: 0.4 });
+    van.style.transform = 'translateX(-40px)';
+    van.style.opacity = '0.8';
+    vanObs.observe(van);
+  }
+
+  // ========== ACTIVE NAV LINK ==========
+  document.querySelectorAll('.navbar nav a').forEach(link => {
+    if (link.innerText.trim() === 'About Us') link.classList.add('active');
+  });
+</script>
+
+</body>
+</html>
