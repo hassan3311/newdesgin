@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>IBB Petroleum</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>IBB Petroleum | Fueling Excellence</title>
 
 <style>
 :root {
@@ -16,11 +17,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-   font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 .logo img {
-  height: 50px;   /* control height */
-  width: auto;    /* maintain ratio */
+  height: 50px;
+  width: auto;
   object-fit: contain;
 }
 /* NAVBAR */
@@ -30,8 +31,8 @@
   padding: 15px 40px;
   align-items: center;
   background: white;
+  flex-wrap: wrap;
 }
-
 .navbar nav a {
   margin: 0 12px;
   text-decoration: none;
@@ -39,11 +40,9 @@
   font-weight: 500;
   transition: 0.3s;
 }
-
 .navbar nav a:hover {
   color: var(--secondary);
 }
-
 .btn {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
@@ -53,7 +52,10 @@
   cursor: pointer;
   transition: 0.3s;
 }
-
+.btn a {
+  color: white;
+  text-decoration: none;
+}
 .btn:hover {
   transform: translateY(-2px);
 }
@@ -64,8 +66,6 @@
   height: 100vh;
   overflow: hidden;
 }
-
-/* SLIDER */
 .slide {
   position: absolute;
   width: 100%;
@@ -73,19 +73,15 @@
   opacity: 0;
   transition: 1s ease;
 }
-
 .slide.active {
   opacity: 1;
 }
-
 .slide video,
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-/* OVERLAY */
 .overlay {
   position: absolute;
   width: 60%;
@@ -94,8 +90,6 @@
   clip-path: polygon(0 0, 85% 0, 65% 100%, 0% 100%);
   z-index: 2;
 }
-
-/* CONTENT */
 .content {
   position: absolute;
   top: 40%;
@@ -104,20 +98,16 @@
   z-index: 3;
   max-width: 520px;
 }
-
 .content h1 {
   font-size: 64px;
   font-weight: 700;
   letter-spacing: 1px;
 }
-
 .content p {
   margin-top: 15px;
   font-size: 18px;
   opacity: 0.9;
 }
-
-/* SERVICE BOX */
 .service-box {
   position: absolute;
   right: 80px;
@@ -131,7 +121,6 @@
   z-index: 3;
   border: 1px solid rgba(255,255,255,0.2);
 }
-
 .service-box button {
   margin-top: 12px;
   padding: 10px;
@@ -142,23 +131,29 @@
   border-radius: 6px;
   cursor: pointer;
 }
-
-/* CONTROLS */
 .controls span {
   font-size: 30px;
   color: white;
   cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(0,0,0,0.5);
+  padding: 8px 15px;
+  border-radius: 40px;
+  z-index: 10;
+}
+.controls span:first-child {
+  right: 100px;
 }
 
-/* SERVICES OVERLAP */
+/* SERVICES */
 .services {
   position: relative;
   margin-top: -120px;
   z-index: 5;
-  padding: 0 40px;
-   padding: 100px 20px 60px; /* upar se thora zyada space */
+  padding: 100px 20px 60px;
 }
-
 .services-box {
   background: white;
   border-radius: 14px;
@@ -167,9 +162,8 @@
   gap: 20px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.1);
   position: relative;
+  flex-wrap: wrap;
 }
-
-/* TOP BLUE LINE */
 .services-box::before {
   content: "";
   position: absolute;
@@ -180,14 +174,14 @@
   background: linear-gradient(to right, var(--primary), var(--secondary));
   border-radius: 14px 14px 0 0;
 }
-
-/* CARD */
 .card {
   background: white;
   border-radius: 12px;
   transition: 0.4s;
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
 }
-
 .card:hover {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
@@ -196,102 +190,57 @@
   margin-bottom: 10px;
   color: var(--primary);
 }
-
 .card p {
   font-size: 14px;
   margin-bottom: 15px;
   color: #555;
 }
-
 .card button {
   background: var(--primary);
   color: white;
   padding: 10px 18px;
   border: none;
   border-radius: 6px;
+  cursor: pointer;
   transition: 0.3s;
 }
 .card h3 i {
   margin-right: 8px;
-  color: #1e3a8a; /* blue */
+  color: #1e3a8a;
   font-size: 18px;
 }
-
 .card button:hover {
   background: var(--secondary);
 }
 
-/* MOBILE */
-@media (max-width:768px) {
-
-  .overlay {
-    width: 100%;
-    clip-path: none;
-  }
-
-  .content {
-    position: relative;
-    left: 0;
-    padding: 20px;
-    text-align: center;
-  }
-
-  .content h1 {
-    font-size: 34px;
-  }
-
-  .service-box {
-    position: relative;
-    margin: 20px auto;
-    right: 0;
-    width: 90%;
-  }
-
-  .services {
-    margin-top: -70px;
-    padding: 0 15px;
-  }
-
-  .services-box {
-    flex-direction: column;
-  }
-}
-
-
-/* SECTION */
+/* FEATURE SECTION */
 .feature-section {
   padding: 100px 20px;
   background: #f8fafc;
 }
-
 .feature-container {
-  max-width: 950px;   /* 👈 MAIN FIX */
-  margin: 0 auto;      /* center */
+  max-width: 950px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   gap: 50px;
+  flex-wrap: wrap;
 }
-
-/* TEXT */
 .feature-text {
   flex: 1;
 }
-
 .feature-text h2 {
   font-size: 38px;
   font-weight: 700;
   color: #1a1a1a;
   line-height: 1.3;
 }
-
 .feature-text p {
   margin-top: 15px;
   color: #666;
   font-size: 16px;
   line-height: 1.6;
 }
-
-/* BUTTON */
 .primary-btn {
   margin-top: 20px;
   background: linear-gradient(135deg, #0d3b66, #1c6ed5);
@@ -302,24 +251,18 @@
   cursor: pointer;
   transition: 0.3s;
 }
-
 .primary-btn:hover {
   transform: translateY(-3px);
 }
-
-/* IMAGE */
 .feature-image {
   flex: 1;
 }
-
 .feature-image img {
   width: 100%;
   border-radius: 10px;
   border: 3px solid #1c6ed5;
   transition: 0.4s;
 }
-
-/* HOVER EFFECT */
 .feature-image:hover img {
   transform: scale(1.03);
 }
@@ -330,237 +273,34 @@
   transform: translateY(40px);
   transition: 0.8s ease;
 }
-
 .animate.show {
   opacity: 1;
   transform: translateY(0);
 }
-
 .animate-left {
   transform: translateX(-60px);
 }
-
 .animate-right {
   transform: translateX(60px);
 }
-
 .animate.show.animate-left,
 .animate.show.animate-right {
   transform: translateX(0);
 }
 
-/* MOBILE */
-@media (max-width:768px) {
-
-  .feature-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .feature-text h2 {
-    font-size: 28px;
-  }
-
-}
-
-/* SECTION */
-.budget-section {
-  padding: 100px 20px;
-  background: #f8fafc;
-}
-
-/* CONTAINER */
-.budget-container {
-  max-width: 950px;   /* 👈 YOUR REQUIREMENT */
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-/* IMAGE */
-.budget-image {
-  flex: 1;
-}
-
-.budget-image img {
-  width: 100%;
-  border-radius: 10px;
-  border: 3px solid #1c6ed5;
-  transition: 0.3s;
-}
-
-.budget-image:hover img {
-  transform: scale(1.03);
-}
-
-/* TEXT */
-.budget-text {
-  flex: 1;
-}
-
-.budget-text h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: #1a1a1a;
-}
-
-.budget-text p {
-  margin-top: 15px;
-  color: #666;
-  line-height: 1.6;
-}
-
-/* BUTTON (reuse same) */
-.primary-btn {
-  margin-top: 20px;
-  background: linear-gradient(135deg, #0d3b66, #1c6ed5);
-  color: white;
-  padding: 12px 22px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* MOBILE */
-@media (max-width:768px) {
-
-  .budget-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .budget-text h2 {
-    font-size: 26px;
-  }
-
-}
-
-
-
-
-/* ================= FOOTER WRAPPER ================= */
-.footer-wrapper {
-  position: relative;
-  overflow: hidden;
-}
-
-/* CTA */
-.cta-section {
-  position: relative;
-  height: 400px;
-  background: url('./images/cta-bg.jpg') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cta-section::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-    background: linear-gradient(
-    rgba(10,44,74,0.9),
-    rgba(10,44,74,0.7)
-  );
-}
-
-.cta-content {
-  position: relative;
-  text-align: center;
-  color: white;
-  max-width: 700px;
-}
-
-.cta-btn {
-  margin-top: 20px;
-  background: #ff7a00;
-  padding: 12px 25px;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* FOOTER */
-.footer-bar {
-  position: relative;
-background: url('./images/hero3.jpg.png') center/cover no-repeat;
-  padding: 40px;
-  color: white;
-}
-
-/* overlay for readability */
-.footer-bar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
- 
-}
-
-.footer-container {
-  position: relative;
-  z-index: 2;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  gap: 40px;
-  text-align: center;
-}
-/* ================= VAN ANIMATION ================= */
-.footer-van {
-  position: relative;
-
-  justify-self: end; /* van right ki taraf push hogi */
-}
-
-.footer-van img {
-  width: 140px;
-  transform: translateX(-300px); /* start left se */
-  opacity: 0;
-  transition: transform 2s ease, opacity 1.5s ease;
-}
-
-/* move to RIGHT (address side 🔥) */
-.footer-van.show img {
-  transform: translateX(120px); /* adjust karo */
-  opacity: 1;
-}
-.footer-van p {
-  margin-top: 5px;
-  font-weight: bold;
-}
-
-/* ACTIVE STATE */
-.footer-van.show {
-  transform: translateX(0); /* move forward */
-  opacity: 1;
-}
-
-/* MOBILE */
-@media (max-width:768px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-}
-/* stats */
+/* STATS */
 .stats {
   margin-top: 80px;
   padding: 70px 20px;
-  background: linear-gradient(135deg, #1e3a8a, #0f172a); /* blue → dark */
+  background: linear-gradient(135deg, #1e3a8a, #0f172a);
   color: #fff;
 }
-
 .stats-box {
   display: flex;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
 }
-
 .stat {
   background: rgba(255,255,255,0.05);
   padding: 30px 25px;
@@ -571,79 +311,60 @@ background: url('./images/hero3.jpg.png') center/cover no-repeat;
   transition: 0.3s;
   border: 1px solid rgba(255,255,255,0.08);
 }
-
 .stat:hover {
   transform: translateY(-8px);
-  border-color: #dc2626; /* red accent */
+  border-color: #dc2626;
 }
-
 .stat h2 {
   font-size: 42px;
   margin-bottom: 8px;
   font-weight: 700;
   color: #ffffff;
 }
-
 .stat h2::after {
   content: "+";
-  color: #dc2626; /* red + sign */
+  color: #dc2626;
 }
-
 .stat p {
   font-size: 14px;
   color: #cbd5f5;
-  letter-spacing: 0.5px;
 }
-/* partners */
-    .partners {
+
+/* PARTNERS */
+.partners {
   padding: 60px 20px;
   background: #fff;
   text-align: center;
-
 }
 .partners .section-title {
-  color:  #1e3a8a;
+  color: #1e3a8a;
 }
 .carousel {
   overflow: hidden;
   position: relative;
   margin-top: 30px;
 }
-
-/* fade effect (premium look 🔥) */
-
-
 .carousel-track {
   display: flex;
   width: max-content;
   gap: 140px;
-  animation: scroll 25s linear infinite;
+  animation: scroll 35s linear infinite;
 }
-
 .carousel img {
   height: 60px;
   opacity: 0.8;
-  
   transition: 0.3s;
 }
 .carousel img:hover {
-  filter: saturate();
   opacity: 1;
   transform: scale(1.1);
 }
-.carousel-track {
-  animation: scroll 35s linear infinite; /* slow smooth */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* REAL endless animation */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+/* ========== NEW ENHANCED CHAT WIDGET ========== */
 .chat-widget {
   position: fixed;
   bottom: 25px;
@@ -651,27 +372,42 @@ background: url('./images/hero3.jpg.png') center/cover no-repeat;
   z-index: 999;
 }
 
-/* IMAGE BUTTON */
-.chat-toggle img {
-  width: 70px;
-  border-radius: 50%;
+/* Toggle Button */
+.chat-toggle {
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   transition: 0.3s;
   animation: float 3s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
-
+.chat-toggle img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: 0.3s;
+  border: 2px solid white;
+}
 .chat-toggle img:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
-
-/* floating animation */
+.chat-toggle span {
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--primary);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 30px;
+}
 @keyframes float {
   0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
 
-/* MENU */
+/* Menu Panel */
 .chat-menu {
   display: none;
   flex-direction: column;
@@ -679,548 +415,528 @@ background: url('./images/hero3.jpg.png') center/cover no-repeat;
   bottom: 85px;
   right: 0;
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
   overflow: hidden;
+  min-width: 210px;
 }
-
-.chat-menu a {
-  padding: 12px 15px;
-  text-decoration: none;
-  color: #333;
-  border-bottom: 1px solid #eee;
-  transition: 0.3s;
-}
-
-.chat-menu a:hover {
-  background: #1c6ed5;
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #0d3b66, #1c6ed5);
   color: white;
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.close-menu-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.2s;
+  line-height: 1;
+}
+.close-menu-btn:hover {
+  transform: scale(1.2);
+}
+.chat-menu a {
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #1f2f44;
+  border-bottom: 1px solid #edf2f7;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.chat-menu a:last-child {
+  border-bottom: none;
+}
+.chat-menu a:hover {
+  background: #eef4ff;
+  color: var(--secondary);
 }
 
-/* CHAT BOX */
+/* Chat Box */
 .chat-box {
   display: none;
-  width: 280px;
-  height: 350px;
+  width: 350px;
+  height: 520px;
   background: white;
   position: absolute;
   bottom: 85px;
   right: 0;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
   flex-direction: column;
+  overflow: hidden;
 }
-
 .chat-header {
   background: linear-gradient(135deg, #0d3b66, #1c6ed5);
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: white;
-  padding: 10px;
-  text-align: center;
 }
-
+.chat-header h4 {
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+.close-chat-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.2s;
+  line-height: 1;
+}
+.close-chat-btn:hover {
+  transform: scale(1.2);
+}
 .chat-body {
   flex: 1;
-  padding: 10px;
+  padding: 16px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f9fafb;
+}
+.bot-message, .user-message {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  line-height: 1.4;
   font-size: 13px;
 }
-
+.user-message {
+  background: #1c6ed5;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+.bot-message {
+  background: #e5e7eb;
+  color: #1f2937;
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+}
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 12px;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+}
+.quick-btn {
+  background: #f0f4fa;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--primary);
+}
+.quick-btn:hover {
+  background: var(--secondary);
+  color: white;
+}
 .chat-input {
   display: flex;
   border-top: 1px solid #ddd;
+  background: white;
 }
-
 .chat-input input {
   flex: 1;
-  padding: 8px;
+  padding: 12px;
   border: none;
   outline: none;
+  font-size: 14px;
 }
-
 .chat-input button {
-  background: #1c6ed5;
+  background: var(--secondary);
   color: white;
   border: none;
-  padding: 0 12px;
+  padding: 0 18px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s;
+}
+.chat-input button:hover {
+  background: #0d3b66;
+}
+
+/* FOOTER */
+.footer-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.cta-section {
+  position: relative;
+  height: 400px;
+  background: url('./images/cta-bg.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta-section::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(10,44,74,0.9), rgba(10,44,74,0.7));
+}
+.cta-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  max-width: 700px;
+}
+.cta-btn {
+  margin-top: 20px;
+  background: #ff7a00;
+  padding: 12px 25px;
+  border: none;
+  color: white;
+  border-radius: 6px;
   cursor: pointer;
 }
-/* animation */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-  70% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
+.footer-bar {
+  position: relative;
+  background: #0a2a44;
+  padding: 80px 20px;
+  color: white;
+  overflow: hidden;
 }
 
+.footer-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CENTER ADDRESS */
+.footer-address {
+  text-align: center;
+  z-index: 2;
+}
+
+/* VAN LEFT START */
+.footer-van {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -220px;
+}
+
+.footer-van img {
+  width: 140px;
+  opacity: 0;
+  transform: translateX(0);
+  transition: transform 4s cubic-bezier(0.22, 1, 0.36, 1), opacity 1s;
+}
+/* MOBILE */
+@media (max-width:768px) {
+  .navbar { flex-direction: column; gap: 15px; padding: 15px 20px; }
+  .navbar nav { flex-wrap: wrap; justify-content: center; }
+  .overlay { width: 100%; clip-path: none; }
+  .content { position: relative; left: 0; padding: 20px; text-align: center; }
+  .content h1 { font-size: 34px; }
+  .service-box { position: relative; margin: 20px auto; right: 0; width: 90%; }
+  .services { margin-top: -70px; padding: 80px 15px 40px; }
+  .services-box { flex-direction: column; }
+  .feature-container { flex-direction: column; text-align: center; }
+  .feature-text h2 { font-size: 28px; }
+  .footer-container { grid-template-columns: 1fr; gap: 30px; }
+  .chat-box { width: 310px; right: -10px; }
+  .controls span { bottom: 15px; right: 15px; font-size: 24px; padding: 5px 12px; }
+  .controls span:first-child { right: 75px; }
+}
 </style>
-
 </head>
-
 <body>
 
 <header class="navbar">
-  <div class="logo"><img src="./images/logo.png.png" alt=""></div>
+  <div class="logo"><img src="./images/logo.png.png" alt="IBB Petroleum"></div>
   <nav>
-    <a href="#">Fueling</a>
+    <a href="./about-us.html">About Us</a>
     <a href="#">Construction</a>
     <a href="#">Compliance</a>
     <a href="#">Products</a>
   </nav>
-  <button class="btn">Service Request</button>
+  <button class="btn"><a href="contact-us.html">Service Request</a></button>
 </header>
 
 <section class="hero">
-
   <div class="slides">
-
-    <!-- VIDEO -->
-    <div class="slide active">
-      <video muted loop playsinline>
-        <source src="./videos/video2.mp4" type="video/mp4">
-      </video>
-    </div>
-
-    <!-- IMAGE -->
-    <div class="slide">
-      <img src="./images/before.png" alt="">
-    </div>
-
-    <!-- VIDEO -->
-    <div class="slide">
-      <video muted loop playsinline>
-        <source src="./videos/video3.mp4" type="video/mp4">
-      </video>
-    </div>
-
- <!-- IMAGE -->
-    <div class="slide">
-      <img src="./images/after.png" alt="">
-    </div>
+    <div class="slide active"><video muted loop playsinline><source src="./videos/video2.mp4" type="video/mp4"></video></div>
+    <div class="slide"><img src="./images/before.png" alt=""></div>
+    <div class="slide"><video muted loop playsinline><source src="./videos/video3.mp4" type="video/mp4"></video></div>
+    <div class="slide"><img src="./images/after.png" alt=""></div>
   </div>
-
   <div class="overlay"></div>
-
-  <div class="content">
-<h1>Powering Fuel Solutions</h1>
-    <p>
-      help your business grow faster </p>
-  </div>
-
-  <div class="service-box">
-    <h3>24/7 Emergency Service</h3>
-    <p>Call: (248)250-6110</p>
-    <button>REQUEST SERVICE</button>
-  </div>
-
-  <div class="controls">
-    <span onclick="prevSlide()">❮</span>
-    <span onclick="nextSlide()">❯</span>
-  </div>
-
+  <div class="content"><h1>Powering Fuel Solutions</h1><p>help your business grow faster</p></div>
+  <div class="service-box"><h3>24/7 Emergency Service</h3><p>Call: (248)250-6110</p><button>REQUEST SERVICE</button></div>
+  <div class="controls"><span onclick="prevSlide()">❮</span><span onclick="nextSlide()">❯</span></div>
 </section>
 
- <section class="services">
+<section class="services">
   <div class="services-box">
-
-    <div class="card">
-      <h3><i class="fas fa-gas-pump"></i> RETAIL FUELING</h3>
-      <p>
-        Complete solutions for gas stations including fuel dispensers, POS systems, 
-        underground tanks, and forecourt automation.
-      </p>
-      <button>Learn More</button>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-industry"></i> COMMERCIAL FUELING</h3>
-      <p>
-        Fuel systems for fleets and industries with high-performance pumps, 
-        storage tanks, and fuel management solutions.
-      </p>
-      <button>Learn More</button>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-tools"></i> MAINTENANCE & SUPPORT</h3>
-      <p>
-        Professional maintenance, inspection, and technical support services 
-        to ensure smooth and safe operation of petroleum equipment.
-      </p>
-      <button>Learn More</button>
-    </div>
-
+    <div class="card"><h3><i class="fas fa-gas-pump"></i> RETAIL FUELING</h3><p>Complete solutions for gas stations including fuel dispensers, POS systems, underground tanks, and forecourt automation.</p><button>Learn More</button></div>
+    <div class="card"><h3><i class="fas fa-industry"></i> COMMERCIAL FUELING</h3><p>Fuel systems for fleets and industries with high-performance pumps, storage tanks, and fuel management solutions.</p><button>Learn More</button></div>
+    <div class="card"><h3><i class="fas fa-tools"></i> MAINTENANCE & SUPPORT</h3><p>Professional maintenance, inspection, and technical support services to ensure smooth and safe operation of petroleum equipment.</p><button>Learn More</button></div>
   </div>
 </section>
 
-<section class="feature-section">
-  <div class="feature-container">
+<section class="feature-section"><div class="feature-container"><div class="feature-text animate-left animate"><h2>Advanced Fueling Technology & Equipment</h2><p>We provide industry-leading fueling systems including high-performance dispensers, automation solutions, and reliable petroleum equipment.</p><button class="primary-btn">EXPLORE SERVICES</button></div><div class="feature-image animate-right animate"><img src="./images/expert.jpg" alt=""></div></div></section>
+<section class="feature-section"><div class="feature-container"><div class="feature-image animate-left animate"><img src="./images/1481.jpg" alt=""></div><div class="feature-text animate-right animate"><h2>Customized Solutions for Every Project</h2><p>Every fueling station and commercial setup is unique. We deliver tailored solutions that fit operational needs, budget, and long-term performance.</p><button class="primary-btn">CONTACT US</button></div></div></section>
+<section class="feature-section"><div class="feature-container"><div class="feature-text animate-left animate"><h2>Reliable Maintenance & Technical Support</h2><p>Our experienced technicians provide ongoing maintenance, inspections, and rapid support services to ensure your fueling systems remain safe and fully operational.</p><button class="primary-btn">REQUEST SERVICE</button></div><div class="feature-image animate-right animate"><img src="./images/pexels-kenzero14-28427825.jpg" alt=""></div></div></section>
 
-    <div class="feature-text animate-left animate">
-      <h2>Advanced Fueling Technology & Equipment</h2>
-      <p>
-        We provide industry-leading fueling systems including high-performance dispensers, 
-        automation solutions, and reliable petroleum equipment.
-      </p>
-      <button class="primary-btn">EXPLORE SERVICES</button>
-    </div>
+<section class="stats"><div class="stats-box"><div class="stat"><h2 class="counter" data-target="874">0</h2><p>Happy Clients</p></div><div class="stat"><h2 class="counter" data-target="398">0</h2><p>Projects Completed</p></div><div class="stat"><h2 class="counter" data-target="42">0</h2><p>Projects Under Execution</p></div><div class="stat"><h2 class="counter" data-target="18">0</h2><p>Years of Experience</p></div></div></section>
 
-    <div class="feature-image animate-right animate">
-      <img src="./images/expert.jpg" alt="">
-    </div>
+<section class="partners"><h2 class="section-title">Our Partners</h2><div class="carousel"><div class="carousel-track"><img src="./images/bp.png" alt=""><img src="./images/emco-wheaton-logo.png" alt=""><img src="./images/esco.png" alt=""><img src="./images/exxon.png" alt=""><img src="./images/marathon.png" alt=""><img src="./images/mobil.jpg" alt=""><img src="./images/morgan.png" alt=""><img src="./images/pei.png" alt=""><img src="./images/PetroClear-Logo-Color-CMYK-whiteStroke.png" alt=""><img src="./images/bp.png" alt=""><img src="./images/emco-wheaton-logo.png" alt=""><img src="./images/esco.png" alt=""><img src="./images/exxon.png" alt=""><img src="./images/marathon.png" alt=""><img src="./images/mobil.jpg" alt=""><img src="./images/morgan.png" alt=""><img src="./images/pei.png" alt=""><img src="./images/PetroClear-Logo-Color-CMYK-whiteStroke.png" alt=""></div></div></section>
 
-  </div>
-</section>
-<section class="feature-section">
-  <div class="feature-container reverse">
-
-    <div class="feature-image animate animate-left">
-      <img src="./images/1481.jpg" alt="">
-    </div>
-
-    <div class="feature-text animate animate-right">
-      <h2>Customized Solutions for Every Project</h2>
-      <p>
-        Every fueling station and commercial setup is unique. We deliver tailored solutions 
-        that fit operational needs, budget, and long-term performance.
-      </p>
-      <button class="primary-btn">CONTACT US</button>
-    </div>
-
-  </div>
-</section>
-<section class="feature-section">
-  <div class="feature-container">
-
-    <div class="feature-text animate-left animate">
-      <h2>Reliable Maintenance & Technical Support</h2>
-      <p>
-        Our experienced technicians provide ongoing maintenance, inspections, and rapid 
-        support services to ensure your fueling systems remain safe and fully operational.
-      </p>
-      <button class="primary-btn">REQUEST SERVICE</button>
-    </div>
-
-    <div class="feature-image animate-right animate">
-      <img src="./images/pexels-kenzero14-28427825.jpg" alt="">
-    </div>
-
-  </div>
-</section>
-<!-- ================= stats ================= -->
-<section class="stats">
-  <div class="stats-box">
-
-    <div class="stat">
-      <h2 class="counter" data-target="874">0</h2>
-      <p>Happy Clients</p>
-    </div>
-
-    <div class="stat">
-      <h2 class="counter" data-target="398">0</h2>
-      <p>Projects Completed</p>
-    </div>
-
-    <div class="stat">
-      <h2 class="counter" data-target="42">0</h2>
-      <p>Projects Under Execution</p>
-    </div>
-
-    <div class="stat">
-      <h2 class="counter" data-target="18">0</h2>
-      <p>Years of Experience</p>
-    </div>
-
-  </div>
-</section>
-<!-- ================= partners ================= -->
-<section class="partners">
-  <h2 class="section-title">Our Partners</h2>
-
-  <div class="carousel">
-    <div class="carousel-track">
-
-      <img src="./images/bp.png" alt="">
-
-      <img src="./images/emco-wheaton-logo.png" alt="">
-      <img src="./images/esco.png" alt="">
-      <img src="./images/exxon.png" alt="">
-            <img src="./images/marathon.png" alt="">
-                  <img src="./images/mobil.jpg" alt="">
-                        <img src="./images/morgan.png" alt="">
-                              <img src="./images/pei.png" alt="">
-                                    <img src="./images/PetroClear-Logo-Color-CMYK-whiteStroke.png" alt="">
-
-      <!-- duplicate for smooth loop -->
-  <img src="./images/bp.png" alt="">
-   
-      <img src="./images/emco-wheaton-logo.png" alt="">
-      <img src="./images/esco.png" alt="">
-      <img src="./images/exxon.png" alt="">
-            <img src="./images/marathon.png" alt="">
-                  <img src="./images/mobil.jpg" alt="">
-                        <img src="./images/morgan.png" alt="">
-                              <img src="./images/pei.png" alt="">
-                                    <img src="./images/PetroClear-Logo-Color-CMYK-whiteStroke.png" alt="">
-
-    </div>
-  </div>
-</section>
+<!-- NEW ENHANCED CHAT WIDGET (Replaced old one) -->
 <div class="chat-widget">
-
-  <!-- Image Button -->
   <div class="chat-toggle" onclick="toggleMenu()">
-    <p>Talk Us</p>
     <img src="./images/worker.png" alt="Support">
+    <span>Chat with us</span>
   </div>
 
-  <!-- Menu -->
+  <!-- Menu with Close Button -->
   <div class="chat-menu" id="chatMenu">
-    <a href="#" onclick="openChat()">💬 Ask Question</a>
+    <div class="menu-header">
+      <span>📞 Quick Support</span>
+      <button class="close-menu-btn" onclick="closeMenu()">✕</button>
+    </div>
+    <a href="#" onclick="openChat(); return false;">💬 Ask Question</a>
     <a href="https://wa.me/12482506110" target="_blank">📱 WhatsApp</a>
-    <a href="tel:+12482506110">📞 Call</a>
-    <a href="mailto:info@ibbpetroleum.com">📧 Email</a>
+    <a href="tel:+12482506110">📞 Call Now</a>
+    <a href="mailto:info@ibbpetroleum.com">📧 Send Email</a>
   </div>
 
-  <!-- Chat Box -->
+  <!-- Chat Box with Close Button -->
   <div class="chat-box" id="chatBox">
-    <div class="chat-header">Ask a Question</div>
-
-    <div class="chat-body" id="chatBody">
-      <p class="bot">👋 Ask about fueling services...</p>
+    <div class="chat-header">
+      <h4><i class="fas fa-robot"></i> IBB Fuel Assistant</h4>
+      <button class="close-chat-btn" onclick="closeChat()">✕</button>
     </div>
-
+    <div class="chat-body" id="chatBody">
+      <div class="bot-message">👋 Hello! I'm IBB's fuel assistant. Ask me about services, maintenance, pricing, emergency support, or location!</div>
+    </div>
+    <div class="quick-replies">
+      <button class="quick-btn" onclick="sendQuickReply('services')">🔧 Our Services</button>
+      <button class="quick-btn" onclick="sendQuickReply('maintenance')">🛠️ Maintenance</button>
+      <button class="quick-btn" onclick="sendQuickReply('pricing')">💰 Pricing</button>
+      <button class="quick-btn" onclick="sendQuickReply('emergency')">🚨 Emergency</button>
+      <button class="quick-btn" onclick="sendQuickReply('contact')">📞 Contact</button>
+    </div>
     <div class="chat-input">
-      <input type="text" id="userInput" placeholder="Type here...">
+      <input type="text" id="userInput" placeholder="Type your question..." onkeypress="if(event.key==='Enter') sendMessage()">
       <button onclick="sendMessage()">➤</button>
     </div>
   </div>
-
 </div>
-<!-- ================= CTA + FOOTER ================= -->
 
 <section class="footer-wrapper">
-
-  <!-- CTA -->
   <div class="cta-section">
     <div class="cta-content">
       <h2>We are glad you made it here</h2>
-      <p>
-        Do you have any question? Feel free to contact us.
-      </p>
+      <p>Do you have any question? Feel free to contact us.</p>
       <button class="cta-btn">CONTACT US</button>
     </div>
   </div>
 
-  <!-- FOOTER BAR -->
   <div class="footer-bar">
-
     <div class="footer-container">
 
-      <!-- MOVING VAN -->
-      <div class="footer-van animate-van">
+      <!-- VAN -->
+      <div class="footer-van">
         <img src="./images/van.png" alt="">
-       
       </div>
 
-      <!-- OFFICE -->
-      <div>
+      <!-- ADDRESS -->
+      <div class="footer-address">
         <h4>Office</h4>
-        <p>
-21350 Ryan Rd.<br>Warren, MI 48091</p>
-      </div>
-
-      <!-- CONTACT -->
-      <div>
-        <h4>Email & Phone</h4>
-        <p>info@ibbpetroleum.com<br>(248)250-6110</p>
+        <p>21350 Ryan Rd.<br>Warren, MI 48091</p>
       </div>
 
     </div>
-
   </div>
-
 </section>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+// ========== SLIDER ==========
+let slides = document.querySelectorAll(".slide");
+let current = 0;
+function showSlide(index) {
+  slides.forEach((s) => { s.classList.remove("active"); let vid = s.querySelector("video"); if(vid) { vid.pause(); vid.currentTime = 0; } });
+  slides[index].classList.add("active");
+  let activeVideo = slides[index].querySelector("video");
+  if(activeVideo) activeVideo.play().catch(()=>{});
+}
+window.nextSlide = function() { current = (current + 1) % slides.length; showSlide(current); };
+window.prevSlide = function() { current = (current - 1 + slides.length) % slides.length; showSlide(current); };
+setInterval(window.nextSlide, 6000);
+showSlide(0);
 
-  let slides = document.querySelectorAll(".slide");
-  let current = 0;
+// ========== ANIMATION OBSERVER ==========
+// VAN ANIMATION (LEFT → CENTER PERFECT)
+const vanImg = document.querySelector('.footer-van img');
+const address = document.querySelector('.footer-address');
 
-  function showSlide(index) {
-    slides.forEach((s) => {
-      s.classList.remove("active");
+function moveVan() {
+  const addressRect = address.getBoundingClientRect();
+  const vanWidth = vanImg.offsetWidth;
 
-      let vid = s.querySelector("video");
-      if (vid) {
-        vid.pause();
-        vid.currentTime = 0;
-      }
-    });
+  const centerX = addressRect.left + (addressRect.width / 2);
+  const finalX = centerX - vanWidth / 2;
 
-    slides[index].classList.add("active");
+  // LEFT se movement
+  const moveDistance = finalX;
 
-    let activeVideo = slides[index].querySelector("video");
-    if (activeVideo) {
-      activeVideo.play().catch(() => {});
-    }
-  }
-
-  window.nextSlide = function () {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  };
-
-  window.prevSlide = function () {
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
-  };
-
-  // Auto slider
-  setInterval(window.nextSlide, 6000);
-
-  // Scroll effect
-  window.addEventListener("scroll", () => {
-    let hero = document.querySelector(".hero");
-    if (window.scrollY > 50) {
-      hero.classList.add("scrolled");
-    } else {
-      hero.classList.remove("scrolled");
-    }
-  });
-
-  // Play first video
-  showSlide(0);
-
-});
-
-
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
-});
-
-document.querySelectorAll(".animate").forEach(el => {
-  observer.observe(el);
-});
-
-
-/* ================= VAN SCROLL ANIMATION ================= */
-
-const van = document.querySelector('.footer-van');
+  vanImg.style.transform = `translateX(${moveDistance}px)`;
+  vanImg.style.opacity = 1;
+}
 
 const vanObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      van.classList.add('show');
+    if(entry.isIntersecting){
+      moveVan();
     }
   });
 }, { threshold: 0.5 });
 
-vanObserver.observe(van);
-/* ================= counter' ================= */
-
+vanObserver.observe(document.querySelector('.footer-bar'));
+// ========== COUNTERS ==========
 const counters = document.querySelectorAll('.counter');
-
 counters.forEach(counter => {
   const updateCount = () => {
     const target = +counter.getAttribute('data-target');
     const count = +counter.innerText;
-
-    const increment = target / 100;
-
-    if (count < target) {
-      counter.innerText = Math.ceil(count + increment);
-      setTimeout(updateCount, 20);
-    } else {
-      counter.innerText = target;
-    }
+    const increment = target / 80;
+    if(count < target) { counter.innerText = Math.ceil(count + increment); setTimeout(updateCount, 20); }
+    else counter.innerText = target;
   };
-
   updateCount();
 });
 
-/* ================= chatBox ================= */
-
+// ========== NEW ENHANCED CHATBOT ==========
 function toggleMenu() {
   const menu = document.getElementById("chatMenu");
   menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
-
+function closeMenu() {
+  document.getElementById("chatMenu").style.display = "none";
+}
+function closeChat() {
+  document.getElementById("chatBox").style.display = "none";
+}
 function openChat() {
   document.getElementById("chatBox").style.display = "flex";
   document.getElementById("chatMenu").style.display = "none";
 }
 
-function sendMessage() {
-  const input = document.getElementById("userInput");
-  const text = input.value.toLowerCase().trim();
-  if (!text) return;
-
-  const body = document.getElementById("chatBody");
-
-  // user message
-  body.innerHTML += `<p><b>You:</b> ${text}</p>`;
-  input.value = "";
-
-  let reply = "";
-
-  // ✅ SMART COMMON QUESTIONS
-  if (text.includes("service") || text.includes("fuel")) {
-    reply = "We provide Retail & Commercial Fueling, installation, and maintenance services.";
+// Trained Bot Responses
+function getBotReply(userText) {
+  const text = userText.toLowerCase();
+  
+  if(text.includes("service") || text.includes("offer") || text.includes("provide")) {
+    return "🔧 IBB offers: Retail Fueling (dispensers, POS, tanks), Commercial Fleet Systems, and 24/7 Maintenance & Support. What specific service are you looking for?";
   }
-  else if (text.includes("maintenance") || text.includes("repair")) {
-    reply = "We offer 24/7 maintenance and emergency support for fueling systems.";
+  if(text.includes("maintenance") || text.includes("repair") || text.includes("fix")) {
+    return "🛠️ We provide professional maintenance, inspections, tank testing, pump repairs, and 24/7 emergency support. Our certified technicians respond quickly!";
   }
-  else if (text.includes("price") || text.includes("cost")) {
-    reply = "Pricing depends on your project. Please contact us for a custom quote.";
+  if(text.includes("price") || text.includes("cost") || text.includes("quote") || text.includes("how much")) {
+    return "💰 Pricing depends on project scope (equipment, installation, permits). Contact our team at (248)250-6110 or info@ibbpetroleum.com for a custom quote!";
   }
-  else if (text.includes("location") || text.includes("address")) {
-    reply = "📍 21350 Ryan Rd, Warren, MI 48091";
+  if(text.includes("emergency") || text.includes("urgent") || text.includes("breakdown")) {
+    return "🚨 For 24/7 EMERGENCY service, call us immediately at (248)250-6110. Our rapid response team is always ready!";
   }
-  else if (text.includes("time") || text.includes("hours")) {
-    reply = "We are available 24/7 for emergency services.";
+  if(text.includes("location") || text.includes("address") || text.includes("where")) {
+    return "📍 IBB Petroleum HQ: 21350 Ryan Rd, Warren, MI 48091. We serve all of Metro Detroit and surrounding areas.";
   }
-  else if (text.includes("contact") || text.includes("phone")) {
-    reply = "📞 (248)250-6110 <br> 📧 info@ibbpetroleum.com";
+  if(text.includes("hour") || text.includes("time") || text.includes("open")) {
+    return "⏰ Office hours: Mon-Fri 8AM-6PM. Emergency support: 24 hours / 7 days a week.";
   }
-  else if (text.includes("whatsapp")) {
-    reply = "<a href='https://wa.me/12482506110' target='_blank'>💬 Click here to WhatsApp us</a>";
+  if(text.includes("contact") || text.includes("phone") || text.includes("email")) {
+    return "📞 Phone: (248)250-6110 | 📧 Email: info@ibbpetroleum.com | 💬 WhatsApp: +1 (248)250-6110";
   }
-
-  // ❌ UNKNOWN QUESTION → CONTACT SHOW
-  else {
-    reply = `
-      Sorry, I didn’t understand that 🤔<br><br>
-      👉 Please contact our team:<br>
-      📞 (248)250-6110 <br>
-      📧 info@ibbpetroleum.com <br>
-      <a href="https://wa.me/12482506110" target="_blank">💬 WhatsApp Us</a>
-    `;
+  if(text.includes("about") || text.includes("company")) {
+    return "🏢 IBB Petroleum has 18+ years of experience, 874+ happy clients, and 398+ completed projects. We specialize in gas station & commercial fueling equipment.";
   }
-
-  // typing delay feel
-  setTimeout(() => {
-    body.innerHTML += `<p><b>IBB:</b> ${reply}</p>`;
-    body.scrollTop = body.scrollHeight;
-  }, 800);
+  if(text.includes("fuel type") || text.includes("gasoline") || text.includes("diesel")) {
+    return "⛽ We supply equipment for gasoline, diesel, DEF (Diesel Exhaust Fluid), and EV charging prep. Full fueling solutions!";
+  }
+  if(text.includes("compliance") || text.includes("epa")) {
+    return "✅ IBB ensures full EPA & local compliance. We handle tank testing, leak detection, and environmental certifications.";
+  }
+  return "🤔 I'm here to help! Try asking about: 'services', 'maintenance', 'pricing', 'emergency', 'location', 'contact', or 'compliance'. Or call us at (248)250-6110.";
 }
 
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const text = input.value.trim();
+  if(!text) return;
+  
+  const body = document.getElementById("chatBody");
+  body.innerHTML += `<div class="user-message">${escapeHtml(text)}</div>`;
+  input.value = "";
+  body.scrollTop = body.scrollHeight;
+  
+  const reply = getBotReply(text);
+  setTimeout(() => {
+    body.innerHTML += `<div class="bot-message">${reply}</div>`;
+    body.scrollTop = body.scrollHeight;
+  }, 400);
+}
 
+function sendQuickReply(topic) {
+  let question = "";
+  if(topic === 'services') question = "What services do you offer?";
+  else if(topic === 'maintenance') question = "Tell me about maintenance";
+  else if(topic === 'pricing') question = "How much does it cost?";
+  else if(topic === 'emergency') question = "I need emergency service";
+  else if(topic === 'contact') question = "What is your contact info?";
+  document.getElementById("userInput").value = question;
+  sendMessage();
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>]/g, function(m) {
+    if(m === '&') return '&amp;';
+    if(m === '<') return '&lt;';
+    if(m === '>') return '&gt;';
+    return m;
+  });
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+  const widget = document.querySelector('.chat-widget');
+  const menu = document.getElementById('chatMenu');
+  if(menu && menu.style.display === 'flex' && !widget.contains(event.target)) {
+    menu.style.display = 'none';
+  }
+});
 </script>
-
 </body>
 </html>
