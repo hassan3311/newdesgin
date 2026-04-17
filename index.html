@@ -66,6 +66,19 @@
   height: 100vh;
   overflow: hidden;
 }
+
+/* DARK GRADIENT OVERLAY (PREMIUM LOOK) */
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  z-index: 1;
+}
+
 .slide {
   position: absolute;
   width: 100%;
@@ -73,47 +86,72 @@
   opacity: 0;
   transition: 1s ease;
 }
+
 .slide.active {
   opacity: 1;
 }
+
 .slide video,
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+/* REMOVE OLD OVERLAY */
 .overlay {
-  position: absolute;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(13,59,102,0.95), rgba(28,110,213,0.85));
-  clip-path: polygon(0 0, 85% 0, 65% 100%, 0% 100%);
-  z-index: 2;
+  display: none;
 }
+
+/* CONTENT CENTERED */
 .content {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 80px;
+  transform: translateY(-50%);
   color: white;
   z-index: 3;
   max-width: 520px;
 }
+
 .content h1 {
-  font-size: 64px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 68px;
+  font-weight: 800;
+  line-height: 1.1;
 }
+
 .content p {
   margin-top: 15px;
   font-size: 18px;
   opacity: 0.9;
 }
+
+/* CTA BUTTON - FIXED COLOR */
+.hero-btn {
+  margin-top: 20px;
+  padding: 14px 30px;
+  background: #ff7a00;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  background: #e86c00;
+}
+
+/* SERVICE BOX - FIXED BUTTON COLOR */
 .service-box {
   position: absolute;
   right: 80px;
-  top: 40%;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
   padding: 25px;
   border-radius: 12px;
   color: white;
@@ -122,31 +160,20 @@
   border: 1px solid rgba(255,255,255,0.2);
 }
 .service-box button {
-  margin-top: 12px;
-  padding: 10px;
+  background: #ff7a00;
   border: none;
-  background: white;
-  color: var(--primary);
-  font-weight: bold;
+  color: white;
+  padding: 8px 16px;
+  margin-top: 12px;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
 }
-.controls span {
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  background: rgba(0,0,0,0.5);
-  padding: 8px 15px;
-  border-radius: 40px;
-  z-index: 10;
+.service-box button:hover {
+  background: #e86c00;
+  transform: translateY(-2px);
 }
-.controls span:first-child {
-  right: 100px;
-}
-
 /* SERVICES */
 .services {
   position: relative;
@@ -364,7 +391,7 @@
   100% { transform: translateX(-50%); }
 }
 
-/* ========== NEW ENHANCED CHAT WIDGET ========== */
+/* ========== ENHANCED CHAT WIDGET ========== */
 .chat-widget {
   position: fixed;
   bottom: 25px;
@@ -667,12 +694,35 @@
   .controls span { bottom: 15px; right: 15px; font-size: 24px; padding: 5px 12px; }
   .controls span:first-child { right: 75px; }
 }
+/* Additional style for controls */
+.controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 4;
+  display: flex;
+  gap: 12px;
+}
+.controls span {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 28px;
+  padding: 8px 16px;
+  border-radius: 40px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: 0.2s;
+}
+.controls span:hover {
+  background: rgba(0,0,0,0.8);
+  transform: scale(1.05);
+}
 </style>
 </head>
 <body>
 
 <header class="navbar">
-  <div class="logo"><img src="./images/logo.png.png" alt="IBB Petroleum"></div>
+  <div class="logo"><img src="./images/logo.png.png" alt="IBB Petroleum" onerror="this.src='https://placehold.co/200x60?text=IBB+Petroleum'"></div>
   <nav>
     <a href="./about-us.html">About Us</a>
     <a href="#">Construction</a>
@@ -684,17 +734,61 @@
 
 <section class="hero">
   <div class="slides">
-    <div class="slide active"><video muted loop playsinline><source src="./videos/video2.mp4" type="video/mp4"></video></div>
-    <div class="slide"><img src="./images/before.png" alt=""></div>
-    <div class="slide"><video muted loop playsinline><source src="./videos/video3.mp4" type="video/mp4"></video></div>
-    <div class="slide"><img src="./images/after.png" alt=""></div>
+    <div class="slide active">
+      <video muted loop playsinline>
+        <source src="./videos/video2.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="slide">
+      <img src="./ibbphotos/IMG-20260124-WA0034.jpg" alt="" onerror="this.src='https://placehold.co/1920x1080?text=Fuel+Station'">
+    </div>
+
+    <div class="slide">
+      <video muted loop playsinline>
+        <source src="./videos/video3.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="slide">
+      <img src="./ibbphotos/IMG-20260417-WA0021.jpg" alt="" onerror="this.src='https://placehold.co/1920x1080?text=Petroleum+Tech'">
+    </div>
+
+    <div class="slide">
+      <img src="./ibbphotos/IMG-20260124-WA0032.jpg" alt="" onerror="this.src='https://placehold.co/1920x1080?text=Gas+Station'">
+    </div>
+
+    <div class="slide">
+      <img src="./ibbphotos/IMG-20260124-WA0036.jpg" alt="" onerror="this.src='https://placehold.co/1920x1080?text=Oil+Industry'">
+    </div>
+
+    <div class="slide">
+      <img src="./ibbphotos/IMG-20260124-WA0194.jpg" alt="" onerror="this.src='https://placehold.co/1920x1080?text=Modern+Fuel'">
+    </div>
   </div>
-  <div class="overlay"></div>
-  <div class="content"><h1>Powering Fuel Solutions</h1><p>help your business grow faster</p></div>
-  <div class="service-box"><h3>24/7 Emergency Service</h3><p>Call: (248)250-6110</p><button>REQUEST SERVICE</button></div>
-  <div class="controls"><span onclick="prevSlide()">❮</span><span onclick="nextSlide()">❯</span></div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <h1>Powering Fuel Solutions</h1>
+    <p>Help your business grow faster</p>
+    <button class="hero-btn">Get Started</button>
+  </div>
+
+  <!-- SERVICE BOX - FIXED BUTTON COLOR -->
+  <div class="service-box">
+    <h3>24/7 Emergency Service</h3>
+    <p>Call: (248)250-6110</p>
+    <button>REQUEST SERVICE</button>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <span onclick="prevSlide()">❮</span>
+    <span onclick="nextSlide()">❯</span>
+  </div>
 </section>
 
+<!-- SERVICES SECTION - FULLY VISIBLE -->
 <section class="services">
   <div class="services-box">
     <div class="card"><h3><i class="fas fa-gas-pump"></i> RETAIL FUELING</h3><p>Complete solutions for gas stations including fuel dispensers, POS systems, underground tanks, and forecourt automation.</p><button>Learn More</button></div>
@@ -703,22 +797,21 @@
   </div>
 </section>
 
-<section class="feature-section"><div class="feature-container"><div class="feature-text animate-left animate"><h2>Advanced Fueling Technology & Equipment</h2><p>We provide industry-leading fueling systems including high-performance dispensers, automation solutions, and reliable petroleum equipment.</p><button class="primary-btn">EXPLORE SERVICES</button></div><div class="feature-image animate-right animate"><img src="./images/expert.jpg" alt=""></div></div></section>
-<section class="feature-section"><div class="feature-container"><div class="feature-image animate-left animate"><img src="./images/1481.jpg" alt=""></div><div class="feature-text animate-right animate"><h2>Customized Solutions for Every Project</h2><p>Every fueling station and commercial setup is unique. We deliver tailored solutions that fit operational needs, budget, and long-term performance.</p><button class="primary-btn">CONTACT US</button></div></div></section>
-<section class="feature-section"><div class="feature-container"><div class="feature-text animate-left animate"><h2>Reliable Maintenance & Technical Support</h2><p>Our experienced technicians provide ongoing maintenance, inspections, and rapid support services to ensure your fueling systems remain safe and fully operational.</p><button class="primary-btn">REQUEST SERVICE</button></div><div class="feature-image animate-right animate"><img src="./images/pexels-kenzero14-28427825.jpg" alt=""></div></div></section>
+<section class="feature-section"><div class="feature-container"><div class="feature-text animate-left animate"><h2>Advanced Fueling Technology & Equipment</h2><p>We provide industry-leading fueling systems including high-performance dispensers, automation solutions, and reliable petroleum equipment.</p><button class="primary-btn">EXPLORE SERVICES</button></div><div class="feature-image animate-right animate"><img src="./ibbphotos/IMG-20260124-WA0196.jpg" alt="" onerror="this.src='https://placehold.co/600x400?text=Fuel+Tech'"></div></div></section>
+<section class="feature-section"><div class="feature-container"><div class="feature-image animate-left animate"><img src="./ibbphotos/IMG-20260417-WA0032.jpg" alt="" onerror="this.src='https://placehold.co/600x400?text=Custom+Solution'"></div><div class="feature-text animate-right animate"><h2>Customized Solutions for Every Project</h2><p>Every fueling station and commercial setup is unique. We deliver tailored solutions that fit operational needs, budget, and long-term performance.</p><button class="primary-btn">CONTACT US</button></div></div></section>
+<section class="feature-section"><div class="feature-container"><div class="feature-text animate-left animate"><h2>Reliable Maintenance & Technical Support</h2><p>Our experienced technicians provide ongoing maintenance, inspections, and rapid support services to ensure your fueling systems remain safe and fully operational.</p><button class="primary-btn">REQUEST SERVICE</button></div><div class="feature-image animate-right animate"><img src="./ibbphotos/IMG-20260124-WA0181.jpg" alt="" onerror="this.src='https://placehold.co/600x400?text=Maintenance'"></div></div></section>
 
 <section class="stats"><div class="stats-box"><div class="stat"><h2 class="counter" data-target="874">0</h2><p>Happy Clients</p></div><div class="stat"><h2 class="counter" data-target="398">0</h2><p>Projects Completed</p></div><div class="stat"><h2 class="counter" data-target="42">0</h2><p>Projects Under Execution</p></div><div class="stat"><h2 class="counter" data-target="18">0</h2><p>Years of Experience</p></div></div></section>
 
-<section class="partners"><h2 class="section-title">Our Partners</h2><div class="carousel"><div class="carousel-track"><img src="./images/bp.png" alt=""><img src="./images/emco-wheaton-logo.png" alt=""><img src="./images/esco.png" alt=""><img src="./images/exxon.png" alt=""><img src="./images/marathon.png" alt=""><img src="./images/mobil.jpg" alt=""><img src="./images/morgan.png" alt=""><img src="./images/pei.png" alt=""><img src="./images/PetroClear-Logo-Color-CMYK-whiteStroke.png" alt=""><img src="./images/bp.png" alt=""><img src="./images/emco-wheaton-logo.png" alt=""><img src="./images/esco.png" alt=""><img src="./images/exxon.png" alt=""><img src="./images/marathon.png" alt=""><img src="./images/mobil.jpg" alt=""><img src="./images/morgan.png" alt=""><img src="./images/pei.png" alt=""><img src="./images/PetroClear-Logo-Color-CMYK-whiteStroke.png" alt=""></div></div></section>
+<section class="partners"><h2 class="section-title">Our Partners</h2><div class="carousel"><div class="carousel-track"><img src="./images/bp.png" alt="BP" onerror="this.style.display='none'"><img src="./images/emco-wheaton-logo.png" alt="Emco" onerror="this.style.display='none'"><img src="./images/esco.png" alt="Esco" onerror="this.style.display='none'"><img src="./images/exxon.png" alt="Exxon" onerror="this.style.display='none'"><img src="./images/marathon.png" alt="Marathon" onerror="this.style.display='none'"><img src="./images/mobil.jpg" alt="Mobil" onerror="this.style.display='none'"><img src="./images/morgan.png" alt="Morgan" onerror="this.style.display='none'"><img src="./images/pei.png" alt="PEI" onerror="this.style.display='none'"><img src="./images/PetroClear-Logo-Color-CMYK-whiteStroke.png" alt="PetroClear" onerror="this.style.display='none'"><img src="./images/bp.png" alt="BP" onerror="this.style.display='none'"><img src="./images/emco-wheaton-logo.png" alt="Emco" onerror="this.style.display='none'"><img src="./images/esco.png" alt="Esco" onerror="this.style.display='none'"><img src="./images/exxon.png" alt="Exxon" onerror="this.style.display='none'"><img src="./images/marathon.png" alt="Marathon" onerror="this.style.display='none'"><img src="./images/mobil.jpg" alt="Mobil" onerror="this.style.display='none'"><img src="./images/morgan.png" alt="Morgan" onerror="this.style.display='none'"><img src="./images/pei.png" alt="PEI" onerror="this.style.display='none'"><img src="./images/PetroClear-Logo-Color-CMYK-whiteStroke.png" alt="PetroClear" onerror="this.style.display='none'"></div></div></section>
 
-<!-- NEW ENHANCED CHAT WIDGET (Replaced old one) -->
+<!-- CHAT WIDGET -->
 <div class="chat-widget">
   <div class="chat-toggle" onclick="toggleMenu()">
-    <img src="./images/worker.png" alt="Support">
+    <img src="./images/worker.png" alt="Support" onerror="this.src='https://placehold.co/70x70?text=Chat'">
     <span>Chat with us</span>
   </div>
 
-  <!-- Menu with Close Button -->
   <div class="chat-menu" id="chatMenu">
     <div class="menu-header">
       <span>📞 Quick Support</span>
@@ -730,7 +823,6 @@
     <a href="mailto:info@ibbpetroleum.com">📧 Send Email</a>
   </div>
 
-  <!-- Chat Box with Close Button -->
   <div class="chat-box" id="chatBox">
     <div class="chat-header">
       <h4><i class="fas fa-robot"></i> IBB Fuel Assistant</h4>
@@ -764,18 +856,13 @@
 
   <div class="footer-bar">
     <div class="footer-container">
-
-      <!-- VAN -->
       <div class="footer-van">
-        <img src="./images/van.png" alt="">
+        <img src="./images/van.png" alt="Delivery Van" onerror="this.style.display='none'">
       </div>
-
-      <!-- ADDRESS -->
       <div class="footer-address">
         <h4>Office</h4>
         <p>21350 Ryan Rd.<br>Warren, MI 48091</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -798,34 +885,23 @@ window.prevSlide = function() { current = (current - 1 + slides.length) % slides
 setInterval(window.nextSlide, 6000);
 showSlide(0);
 
-// ========== ANIMATION OBSERVER ==========
-// VAN ANIMATION (LEFT → CENTER PERFECT)
+// ========== VAN ANIMATION ==========
 const vanImg = document.querySelector('.footer-van img');
 const address = document.querySelector('.footer-address');
-
 function moveVan() {
+  if(!vanImg || !address) return;
   const addressRect = address.getBoundingClientRect();
   const vanWidth = vanImg.offsetWidth;
-
   const centerX = addressRect.left + (addressRect.width / 2);
   const finalX = centerX - vanWidth / 2;
-
-  // LEFT se movement
-  const moveDistance = finalX;
-
-  vanImg.style.transform = `translateX(${moveDistance}px)`;
+  vanImg.style.transform = `translateX(${finalX}px)`;
   vanImg.style.opacity = 1;
 }
-
 const vanObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      moveVan();
-    }
-  });
-}, { threshold: 0.5 });
+  entries.forEach(entry => { if(entry.isIntersecting) moveVan(); });
+}, { threshold: 0.3 });
+if(document.querySelector('.footer-bar')) vanObserver.observe(document.querySelector('.footer-bar'));
 
-vanObserver.observe(document.querySelector('.footer-bar'));
 // ========== COUNTERS ==========
 const counters = document.querySelectorAll('.counter');
 counters.forEach(counter => {
@@ -839,26 +915,35 @@ counters.forEach(counter => {
   updateCount();
 });
 
-// ========== NEW ENHANCED CHATBOT ==========
+// ========== SCROLL REVEAL ==========
+const animateElements = document.querySelectorAll('.animate');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('show'); });
+}, { threshold: 0.2 });
+animateElements.forEach(el => revealObserver.observe(el));
+
+// ========== CHATBOT FUNCTIONS ==========
 function toggleMenu() {
   const menu = document.getElementById("chatMenu");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  if(menu) menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
 function closeMenu() {
-  document.getElementById("chatMenu").style.display = "none";
+  const menu = document.getElementById("chatMenu");
+  if(menu) menu.style.display = "none";
 }
 function closeChat() {
-  document.getElementById("chatBox").style.display = "none";
+  const chatBox = document.getElementById("chatBox");
+  if(chatBox) chatBox.style.display = "none";
 }
 function openChat() {
-  document.getElementById("chatBox").style.display = "flex";
-  document.getElementById("chatMenu").style.display = "none";
+  const chatBox = document.getElementById("chatBox");
+  const menu = document.getElementById("chatMenu");
+  if(chatBox) chatBox.style.display = "flex";
+  if(menu) menu.style.display = "none";
 }
 
-// Trained Bot Responses
 function getBotReply(userText) {
   const text = userText.toLowerCase();
-  
   if(text.includes("service") || text.includes("offer") || text.includes("provide")) {
     return "🔧 IBB offers: Retail Fueling (dispensers, POS, tanks), Commercial Fleet Systems, and 24/7 Maintenance & Support. What specific service are you looking for?";
   }
@@ -896,12 +981,11 @@ function sendMessage() {
   const input = document.getElementById("userInput");
   const text = input.value.trim();
   if(!text) return;
-  
   const body = document.getElementById("chatBody");
+  if(!body) return;
   body.innerHTML += `<div class="user-message">${escapeHtml(text)}</div>`;
   input.value = "";
   body.scrollTop = body.scrollHeight;
-  
   const reply = getBotReply(text);
   setTimeout(() => {
     body.innerHTML += `<div class="bot-message">${reply}</div>`;
@@ -916,8 +1000,8 @@ function sendQuickReply(topic) {
   else if(topic === 'pricing') question = "How much does it cost?";
   else if(topic === 'emergency') question = "I need emergency service";
   else if(topic === 'contact') question = "What is your contact info?";
-  document.getElementById("userInput").value = question;
-  sendMessage();
+  const inputField = document.getElementById("userInput");
+  if(inputField) { inputField.value = question; sendMessage(); }
 }
 
 function escapeHtml(str) {
@@ -929,12 +1013,19 @@ function escapeHtml(str) {
   });
 }
 
-// Close menu when clicking outside
 document.addEventListener('click', function(event) {
   const widget = document.querySelector('.chat-widget');
   const menu = document.getElementById('chatMenu');
-  if(menu && menu.style.display === 'flex' && !widget.contains(event.target)) {
+  if(menu && menu.style.display === 'flex' && widget && !widget.contains(event.target)) {
     menu.style.display = 'none';
+  }
+});
+
+window.addEventListener('load', () => {
+  const activeSlide = document.querySelector('.slide.active');
+  if(activeSlide) {
+    const vid = activeSlide.querySelector('video');
+    if(vid) vid.play().catch(e=>console.log("autoplay blocked"));
   }
 });
 </script>
