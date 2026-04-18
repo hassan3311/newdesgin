@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>IBB Petroleum | Blog – Fuel Industry Insights & News</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fafcff;
+      color: #1a2c3e;
+      line-height: 1.5;
+    }
+
+    /* Navbar (consistent with main site) */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 40px;
+      align-items: center;
+      background: white;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+    .logo img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+    }
+    .navbar nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .navbar nav a:hover, .navbar nav a.active {
+      color: #1c6ed5;
+    }
+    .btn {
+      background: linear-gradient(135deg, #0d3b66, #1c6ed5);
+      color: white;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Blog Hero */
+    .blog-hero {
+      background: linear-gradient(115deg, #0a2a44 0%, #0f3b5c 100%);
+      padding: 70px 20px 60px;
+      text-align: center;
+      color: white;
+    }
+    .blog-hero h1 {
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .blog-hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 18px;
+      opacity: 0.9;
+    }
+    .blog-search {
+      margin-top: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      gap: 12px;
+    }
+    .blog-search input {
+      flex: 1;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 60px;
+      font-size: 16px;
+      outline: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .blog-search button {
+      background: #ff7a00;
+      border: none;
+      padding: 0 28px;
+      border-radius: 60px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .blog-search button:hover {
+      background: #e86c00;
+      transform: scale(1.02);
+    }
+
+    /* Blog Layout */
+    .blog-container {
+      max-width: 1300px;
+      margin: 60px auto;
+      padding: 0 30px;
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    /* Main content - posts grid */
+    .blog-main {
+      flex: 3;
+      min-width: 280px;
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      border-bottom: 2px solid #e2edf7;
+      padding-bottom: 12px;
+    }
+    .filter-btn {
+      background: none;
+      border: none;
+      padding: 8px 20px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 40px;
+      transition: 0.2s;
+      color: #4a5b6e;
+    }
+    .filter-btn.active {
+      background: #0d3b66;
+      color: white;
+    }
+    .filter-btn:hover:not(.active) {
+      background: #eef2fa;
+      color: #0d3b66;
+    }
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+    }
+    .blog-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+      transition: 0.3s ease;
+      cursor: pointer;
+      border: 1px solid #eef2f8;
+    }
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
+    }
+    .card-img {
+      height: 210px;
+      background-size: cover;
+      background-position: center;
+      background-color: #cbd5e1;
+    }
+    .card-content {
+      padding: 24px 22px 28px;
+    }
+    .blog-category {
+      display: inline-block;
+      background: #eef4ff;
+      color: #1c6ed5;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 30px;
+      margin-bottom: 12px;
+    }
+    .blog-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #0d3b66;
+      line-height: 1.3;
+    }
+    .blog-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: #6c7a8e;
+      margin-bottom: 14px;
+      align-items: center;
+    }
+    .blog-excerpt {
+      color: #3a4a62;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .read-more {
+      color: #ff7a00;
+      font-weight: 700;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+    .read-more:hover {
+      gap: 10px;
+      color: #e86c00;
+    }
+
+    /* Sidebar */
+    .blog-sidebar {
+      flex: 1.2;
+      min-width: 260px;
+    }
+    .sidebar-widget {
+      background: white;
+      border-radius: 24px;
+      padding: 28px 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      border: 1px solid #eef2f8;
+    }
+    .sidebar-widget h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #0d3b66;
+      border-left: 4px solid #ff7a00;
+      padding-left: 14px;
+    }
+    .category-list li, .recent-list li {
+      list-style: none;
+      margin-bottom: 14px;
+    }
+    .category-list a, .recent-list a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 500;
+      transition: 0.2s;
+      display: flex;
+      justify-content: space-between;
+    }
+    .category-list a:hover, .recent-list a:hover {
+      color: #1c6ed5;
+      transform: translateX(5px);
+    }
+    .newsletter-input {
+      display: flex;
+      margin-top: 16px;
+      gap: 8px;
+    }
+    .newsletter-input input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #dce5ef;
+      border-radius: 40px;
+      outline: none;
+    }
+    .newsletter-input button {
+      background: #0d3b66;
+      border: none;
+      padding: 0 20px;
+      border-radius: 40px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Pagination */
+    .pagination {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .page-num {
+      background: white;
+      border: 1px solid #dce5ef;
+      padding: 8px 16px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .page-num.active, .page-num:hover {
+      background: #0d3b66;
+      color: white;
+      border-color: #0d3b66;
+    }
+
+    /* Footer */
+    .footer-mini {
+      background: #0a2a44;
+      padding: 30px 20px;
+      text-align: center;
+      color: #b9d0f0;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    .footer-mini a {
+      color: #ffb347;
+      text-decoration: none;
+    }
+
+    @media (max-width: 850px) {
+      .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+      }
+      .blog-container {
+        flex-direction: column;
+        padding: 0 20px;
+      }
+      .blog-hero h1 {
+        font-size: 36px;
+      }
+      .posts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <a href="./index.html"><img src="./images/logo.png.png" alt="IBB Petroleum" onerror="this.src='https://placehold.co/200x60?text=IBB+Petroleum'"></a>
+  </div>
+  <nav>
+    <a href="./about-us.html">About Us</a>
+    <a href="#">Construction</a>
+    <a href="#">Compliance</a>
+    <a href="#">Products</a>
+    <a href="./blog.html" class="active">Blog</a>
+    <a href="./privacy.html">Privacy</a>
+  </nav>
+  <button class="btn"><a href="contact-us.html">Service Request</a></button>
+</header>
+
+<section class="blog-hero">
+  <h1>Fuel Insights & Industry News</h1>
+  <p>Expert perspectives on petroleum equipment, compliance, maintenance, and fueling innovations from IBB Petroleum.</p>
+  <div class="blog-search">
+    <input type="text" id="searchInput" placeholder="Search articles..." onkeyup="filterPosts()">
+    <button onclick="filterPosts()"><i class="fas fa-search"></i> Search</button>
+  </div>
+</section>
+
+<div class="blog-container">
+  <div class="blog-main">
+    <div class="filter-tabs">
+      <button class="filter-btn active" data-cat="all" onclick="filterCategory('all')">All Posts</button>
+      <button class="filter-btn" data-cat="industry" onclick="filterCategory('industry')">Industry Trends</button>
+      <button class="filter-btn" data-cat="maintenance" onclick="filterCategory('maintenance')">Maintenance</button>
+      <button class="filter-btn" data-cat="company" onclick="filterCategory('company')">Company News</button>
+      <button class="filter-btn" data-cat="tech" onclick="filterCategory('tech')">Fuel Technology</button>
+    </div>
+    <div id="postsContainer" class="posts-grid"></div>
+    <div id="paginationContainer" class="pagination"></div>
+  </div>
+
+  <aside class="blog-sidebar">
+    <div class="sidebar-widget">
+      <h4><i class="fas fa-folder-open"></i> Categories</h4>
+      <ul class="category-list" id="categoryListSidebar"></ul>
+    </div>
+    <div class="sidebar-widget">
+      <h4><i class="fas fa-clock"></i> Recent Posts</h4>
+      <ul class="recent-list" id="recentPostsList"></ul>
+    </div>
+    <div class="sidebar-widget">
+      <h4><i class="fas fa-envelope"></i> Newsletter</h4>
+      <p>Get the latest fuel industry updates straight to your inbox.</p>
+      <div class="newsletter-input">
+        <input type="email" placeholder="Your email" id="newsEmail">
+        <button onclick="subscribeNews()">Subscribe</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="footer-mini">
+  <p>© 2026 IBB Petroleum — Fueling Excellence. All rights reserved. | <a href="./privacy.html">Privacy Policy</a> | <a href="./blog.html">Blog</a> | <a href="contact-us.html">Contact</a></p>
+  <p style="margin-top: 12px; font-size: 12px;">21350 Ryan Rd. Warren, MI 48091 | (248) 250-6110 | 24/7 Emergency Support</p>
+</footer>
+
+<script>
+  // BLOG DATA (12 articles, diverse categories)
+  const blogPosts = [
+    { id: 1, title: "EPA Compliance 2026: What Gas Station Owners Must Know", category: "industry", date: "April 10, 2026", excerpt: "New EPA guidelines for underground storage tanks (UST) and leak detection. Stay ahead with IBB’s compliance checklist.", image: "https://placehold.co/600x400/1e3a5f/white?text=EPA+Compliance", tags: ["compliance", "epa"] },
+    { id: 2, title: "How to Extend the Life of Your Fuel Dispensers", category: "maintenance", date: "April 2, 2026", excerpt: "Routine maintenance tips to maximize reliability and reduce downtime. Expert advice from IBB technicians.", image: "https://placehold.co/600x400/2c5a2e/white?text=Fuel+Dispenser" },
+    { id: 3, title: "IBB Petroleum Expands Service to Central Michigan", category: "company", date: "March 25, 2026", excerpt: "New mobile service units and 24/7 emergency coverage now available in Lansing, Flint, and surrounding areas.", image: "https://placehold.co/600x400/0d3b66/white?text=Expansion" },
+    { id: 4, title: "The Rise of EV Charging at Fuel Stations: A Hybrid Future", category: "tech", date: "March 18, 2026", excerpt: "How traditional fueling stations are integrating EV fast-chargers. IBB helps future-proof your forecourt.", image: "https://placehold.co/600x400/1c6ed5/white?text=EV+Charging" },
+    { id: 5, title: "Winter Maintenance Guide for Petroleum Equipment", category: "maintenance", date: "February 28, 2026", excerpt: "Prevent freezing, water contamination, and pump failures during cold months. Essential checklist inside.", image: "https://placehold.co/600x400/4a627a/white?text=Winter+Guide" },
+    { id: 6, title: "Understanding Automated Fuel Management Systems", category: "tech", date: "February 15, 2026", excerpt: "Boost efficiency with real-time inventory, fleet cards, and remote monitoring. Benefits and ROI analysis.", image: "https://placehold.co/600x400/15607a/white?text=Fuel+Mgmt" },
+    { id: 7, title: "Top 5 Safety Violations at Fueling Sites (And How to Avoid Them)", category: "industry", date: "February 5, 2026", excerpt: "OSHA and fire code violations that lead to fines. IBB’s safety audit recommendations.", image: "https://placehold.co/600x400/b22222/white?text=Safety" },
+    { id: 8, title: "IBB Petroleum Celebrates 18 Years of Excellence", category: "company", date: "January 20, 2026", excerpt: "Reflecting on two decades of fueling innovation, client success stories, and community impact.", image: "https://placehold.co/600x400/daa520/white?text=18+Years" },
+    { id: 9, title: "Comparing Dispenser Technologies: Conventional vs. High-Speed", category: "tech", date: "January 12, 2026", excerpt: "Throughput, reliability, and total cost of ownership – which dispenser fits your station?", image: "https://placehold.co/600x400/2b5b84/white?text=Dispenser+Tech" },
+    { id: 10, title: "How to Choose the Right Tank Monitoring System", category: "maintenance", date: "December 20, 2025", excerpt: "Leak detection, inventory tracking, and environmental compliance made simple.", image: "https://placehold.co/600x400/3a6b47/white?text=Tank+Monitor" },
+    { id: 11, title: "Legislative Updates: New Michigan Fuel Tax Requirements", category: "industry", date: "December 5, 2025", excerpt: "What station owners need to know about reporting and tax collection changes in 2026.", image: "https://placehold.co/600x400/8b5a2b/white?text=Tax+Update" },
+    { id: 12, title: "IBB Launches 24/7 Rapid Response for Emergency Repairs", category: "company", date: "November 28, 2025", excerpt: "Our new emergency fleet ensures no downtime for your fueling business. Call us anytime.", image: "https://placehold.co/600x400/ff7a00/white?text=24/7+Support" }
+  ];
+
+  let currentCategory = "all";
+  let currentSearch = "";
+  let currentPage = 1;
+  const postsPerPage = 6;
+
+  function renderPosts() {
+    let filtered = blogPosts.filter(post => {
+      const matchCat = currentCategory === "all" || post.category === currentCategory;
+      const matchSearch = currentSearch === "" || post.title.toLowerCase().includes(currentSearch.toLowerCase()) || post.excerpt.toLowerCase().includes(currentSearch.toLowerCase());
+      return matchCat && matchSearch;
+    });
+
+    // Pagination
+    const totalPages = Math.ceil(filtered.length / postsPerPage);
+    const start = (currentPage - 1) * postsPerPage;
+    const paginatedPosts = filtered.slice(start, start + postsPerPage);
+
+    const container = document.getElementById("postsContainer");
+    if (!container) return;
+
+    if (paginatedPosts.length === 0) {
+      container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px;">📭 No articles found. Try different keywords or categories.</div>`;
+      document.getElementById("paginationContainer").innerHTML = "";
+      return;
+    }
+
+    container.innerHTML = paginatedPosts.map(post => `
+      <div class="blog-card" onclick="openPost(${post.id})">
+        <div class="card-img" style="background-image: url('${post.image}'); background-size: cover;"></div>
+        <div class="card-content">
+          <span class="blog-category">${getCategoryLabel(post.category)}</span>
+          <h3>${escapeHtml(post.title)}</h3>
+          <div class="blog-meta"><span><i class="far fa-calendar-alt"></i> ${post.date}</span> <span><i class="far fa-clock"></i> 5 min read</span></div>
+          <div class="blog-excerpt">${escapeHtml(post.excerpt)}</div>
+          <div class="read-more">Read more <i class="fas fa-arrow-right"></i></div>
+        </div>
+      </div>
+    `).join('');
+
+    // Render pagination
+    let paginationHtml = '';
+    for (let i = 1; i <= totalPages; i++) {
+      paginationHtml += `<div class="page-num ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</div>`;
+    }
+    document.getElementById("paginationContainer").innerHTML = paginationHtml;
+  }
+
+  function getCategoryLabel(cat) {
+    const map = { industry: "📊 Industry Trends", maintenance: "🔧 Maintenance", company: "🏢 Company News", tech: "⚡ Fuel Technology" };
+    return map[cat] || cat;
+  }
+
+  function filterCategory(cat) {
+    currentCategory = cat;
+    currentPage = 1;
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      if (btn.getAttribute("data-cat") === cat) btn.classList.add("active");
+      else btn.classList.remove("active");
+    });
+    renderPosts();
+    updateSidebarCounts();
+  }
+
+  function filterPosts() {
+    const searchInput = document.getElementById("searchInput");
+    currentSearch = searchInput ? searchInput.value : "";
+    currentPage = 1;
+    renderPosts();
+    updateSidebarCounts();
+  }
+
+  function goToPage(page) {
+    currentPage = page;
+    renderPosts();
+    window.scrollTo({ top: 400, behavior: "smooth" });
+  }
+
+  function openPost(id) {
+    // For demo, alert with post info – in real site you'd link to single post page
+    const post = blogPosts.find(p => p.id === id);
+    if(post) alert(`📖 "${post.title}"\n\nFull article would open here.\nStay tuned for IBB's detailed guides!`);
+  }
+
+  function updateSidebarCounts() {
+    // update category counts dynamically in sidebar
+    const catCounts = { industry: 0, maintenance: 0, company: 0, tech: 0 };
+    blogPosts.forEach(p => { if(catCounts[p.category] !== undefined) catCounts[p.category]++; });
+    const categoryList = document.getElementById("categoryListSidebar");
+    if(categoryList) {
+      categoryList.innerHTML = `
+        <li><a href="#" onclick="filterCategory('all'); return false;">All Articles <span>(${blogPosts.length})</span></a></li>
+        <li><a href="#" onclick="filterCategory('industry'); return false;">Industry Trends <span>(${catCounts.industry})</span></a></li>
+        <li><a href="#" onclick="filterCategory('maintenance'); return false;">Maintenance <span>(${catCounts.maintenance})</span></a></li>
+        <li><a href="#" onclick="filterCategory('company'); return false;">Company News <span>(${catCounts.company})</span></a></li>
+        <li><a href="#" onclick="filterCategory('tech'); return false;">Fuel Technology <span>(${catCounts.tech})</span></a></li>
+      `;
+    }
+    // recent posts (latest 4)
+    const recentContainer = document.getElementById("recentPostsList");
+    if(recentContainer) {
+      const sortedByDate = [...blogPosts].sort((a,b) => new Date(b.date) - new Date(a.date));
+      const latest = sortedByDate.slice(0, 4);
+      recentContainer.innerHTML = latest.map(p => `<li><a href="#" onclick="openPost(${p.id}); return false;">📄 ${escapeHtml(p.title)}</a></li>`).join('');
+    }
+  }
+
+  function subscribeNews() {
+    const email = document.getElementById("newsEmail").value;
+    if(email && email.includes('@')) {
+      alert(`✅ Thanks for subscribing! We'll send updates to ${email}`);
+      document.getElementById("newsEmail").value = "";
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>]/g, function(m) {
+      if(m === '&') return '&amp;';
+      if(m === '<') return '&lt;';
+      if(m === '>') return '&gt;';
+      return m;
+    });
+  }
+
+  // initial render
+  renderPosts();
+  updateSidebarCounts();
+
+  // reset search if needed
+  window.filterCategory = filterCategory;
+  window.filterPosts = filterPosts;
+  window.goToPage = goToPage;
+  window.openPost = openPost;
+  window.subscribeNews = subscribeNews;
+</script>
+</body>
+</html>
